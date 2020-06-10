@@ -44,7 +44,7 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 
 
 def load_data(database_filepath: str):
-    engine = create_engine(database_filepath)
+    engine = create_engine(f"sqlite:///{database_filepath}")
     df = pd.read_sql_table("RawData", engine)
     X = df["message"].values
     y = df.drop(columns=["id", "message", "original", "genre"]).values
