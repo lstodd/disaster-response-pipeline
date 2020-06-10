@@ -48,7 +48,7 @@ def load_data(database_filepath: str):
     df = pd.read_sql_table("RawData", engine)
     X = df["message"].values
     y = df.drop(columns=["id", "message", "original", "genre"]).values
-    category_names = df.drop(columns=["id", "message", "original", "genre"]).columnsk
+    category_names = df.drop(columns=["id", "message", "original", "genre"]).columns
 
     return X, y, category_names
 
