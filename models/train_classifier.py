@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 import pandas as pd
 import numpy as np
 import pickle as pkl
+import joblib
 
 import nltk
 
@@ -118,7 +119,7 @@ def evaluate_model(model, X_test, y_test, category_names):
 
 def save_model(model, model_filepath):
     model_file = open(model_filepath, 'w')
-    pkl.dump(model, model_file)
+    joblib.dump(model, model_file)
 
 
 def main():
