@@ -66,17 +66,23 @@ def tokenize(text: str):
 
 
 def build_model():
+    # pipeline = Pipeline([
+    #     ('features', FeatureUnion([
+    #
+    #         ('text_pipeline', Pipeline([
+    #             ('vect', CountVectorizer(tokenizer=tokenize)),
+    #             ('tfidf', TfidfTransformer())
+    #         ])),
+    #
+    #         ('starting_verb', StartingVerbExtractor())
+    #     ])),
+    #
+    #     ('clf', MultiOutputClassifier(RandomForestClassifier()))
+    # ])
+
     pipeline = Pipeline([
-        ('features', FeatureUnion([
-
-            ('text_pipeline', Pipeline([
-                ('vect', CountVectorizer(tokenizer=tokenize)),
-                ('tfidf', TfidfTransformer())
-            ])),
-
-            ('starting_verb', StartingVerbExtractor())
-        ])),
-
+        ('vect', CountVectorizer(tokenizer=tokenize)),
+        ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
 
