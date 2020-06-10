@@ -1,10 +1,13 @@
 import sys
+from typing import Tuple
+
 from sqlalchemy import create_engine
 import pandas as pd
 import numpy as np
 import pickle as pkl
 
 import nltk
+
 nltk.download(['punkt', 'wordnet'])
 
 from nltk.tokenize import word_tokenize
@@ -42,13 +45,18 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
         return pd.DataFrame(X_tagged)
 
 
+def load_data(database_filepath: str) -> Tuple[np.array, np.array, np.array]:
+    """
+    Load the training data from the SQLite database.
 
-def load_data(database_filepath: str):
+    :param database_filepath: Database name to load cleaned data from.
+    :return:
+    """
     engine = create_engine(f"sqlite:///{database_filepath}")
     df = pd.read_sql_table("RawData", engine)
     X = df["message"].values
     y = df.drop(columns=["id", "message", "original", "genre"]).values
-    category_names = df.drop(columns=["id", "message", "original", "genre"]).columns
+    category_names = df.drop(columns=["id", "message", "original", "genre"]).columns.values
 
     return X, y, category_names
 
