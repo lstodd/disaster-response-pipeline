@@ -56,7 +56,9 @@ def save_data(df, database_filename) -> None:
     :param df: Cleaned DataFrame.
     :param database_filename: Filename to store SQL database.
     """
-    engine = create_engine(database_filename)
+    print("engine engine number 9")
+    engine = create_engine(f"sqlite:///{database_filename}")
+    print("got here")
     df.to_sql('RawData', engine, index=False)
 
 
@@ -73,6 +75,7 @@ def main():
         df = clean_data(df)
 
         print('Saving data...\n    DATABASE: {}'.format(database_filepath))
+        print(type(database_filepath))
         save_data(df, database_filepath)
 
         print('Cleaned data saved to database!')
