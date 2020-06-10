@@ -88,9 +88,9 @@ def build_model():
 
     # specify parameters for grid search
     parameters = {
-        "features__text_pipeline__tfidf__norm": ["l1", "l2"],
-        'clf__criterion': ["gini", "entropy"],
-        'clf__min_samples_leaf': [1, 2]
+        'tfidf__smooth_idf': (True, False),
+        'clf__estimator__warm_start': (True, False),
+        'clf__estimator__min_samples_leaf': [2, 3, 4],
     }
 
     # create grid search object
