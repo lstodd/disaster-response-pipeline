@@ -118,8 +118,7 @@ def evaluate_model(model, X_test, y_test, category_names):
 
 
 def save_model(model, model_filepath):
-    model_file = open(model_filepath, 'w')
-    joblib.dump(model, model_file)
+    joblib.dump(model, model_filepath)
 
 
 def main():
