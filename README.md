@@ -1,5 +1,16 @@
 # Disaster Response Pipeline Project
 
+When a disaster strikes we want to be able to meet the needs of the people quickly and efficiently. In this project we 
+aim to use historic data to be able to categorise incoming comments and requests so that we can deploy 
+the appropriate expertise quickly. 
+
+### Data
+The original data consists of messages from multiple sources and the annotated categories. Messages can be labelled as 
+more than one category.  
+
+### Model 
+We create a multi class multi label model using XGBoost and natural language processing (NLP) features. 
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
