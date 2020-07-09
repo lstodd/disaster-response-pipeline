@@ -4,27 +4,21 @@ from typing import Tuple
 from sqlalchemy import create_engine
 import pandas as pd
 import numpy as np
-import pickle as pkl
 import joblib
-
-import nltk
-
-nltk.download(['punkt', 'wordnet'])
-
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-
 from sklearn.multioutput import MultiOutputClassifier
-from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
-
-# from models.custom_transformers import StartingVerbExtractor
 from sklearn.base import BaseEstimator, TransformerMixin
+import nltk
+
+nltk.download(['punkt', 'wordnet'])
+
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 
 class StartingVerbExtractor(BaseEstimator, TransformerMixin):
