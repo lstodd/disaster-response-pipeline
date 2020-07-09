@@ -12,6 +12,10 @@ more than one category.
 We create a multi class multi label model using XGBoost and natural language processing (NLP) features. 
 
 ### Instructions:
+
+#### Install requirements
+``` pip install -r requirements.txt```
+
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
