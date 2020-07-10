@@ -1,5 +1,5 @@
 import sys
-from typing import Tuple
+from typing import Tuple, List
 
 from sqlalchemy import create_engine
 import pandas as pd
@@ -45,7 +45,7 @@ def load_data(database_filepath: str) -> Tuple[np.array, np.array, np.array]:
     Load the training data from the SQLite database.
 
     :param database_filepath: Database name to load cleaned data from.
-    :return:
+    :return: Training data, target and category nanes for target values.
     """
     engine = create_engine(f"sqlite:///{database_filepath}")
     df = pd.read_sql_table("RawData", engine)
@@ -56,7 +56,13 @@ def load_data(database_filepath: str) -> Tuple[np.array, np.array, np.array]:
     return X, y, category_names
 
 
-def tokenize(text: str):
+def tokenize(text: str) -> List[str]:
+    """
+    Lowers and splits a string up into separate tokens.
+
+    :param text: Raw string to tokenize.
+    :return: List of separate tokens.
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
