@@ -1,7 +1,4 @@
-import os
 import unittest
-
-import pandas as pd
 
 from models.train_classifier import tokenize
 
@@ -10,7 +7,7 @@ class TestTokenizer(unittest.TestCase):
     def setUp(self):
         self.message = "We need food"
 
-    def test_tokenize_simple_sentence(self):
+    def test_tokenize_splits_simple_sentence(self):
         # arrange
         message = self.message
 
