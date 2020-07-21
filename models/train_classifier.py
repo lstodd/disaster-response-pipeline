@@ -80,29 +80,29 @@ def build_model() -> GridSearchCV:
 
     :return: Sklearn grid searchable pipeline.
     """
-    # pipeline = Pipeline([
-    #     ('features', FeatureUnion([
-    #
-    #         ('text_pipeline', Pipeline([
-    #             ('vect', CountVectorizer(tokenizer=tokenize)),
-    #             ('tfidf', TfidfTransformer())
-    #         ])),
-    #
-    #         ('starting_verb', StartingVerbExtractor())
-    #     ])),
-    #
-    #     ('clf', MultiOutputClassifier(RandomForestClassifier()))
-    # ])
-
     pipeline = Pipeline([
-        ('vect', CountVectorizer(tokenizer=tokenize)),
-        ('tfidf', TfidfTransformer()),
+        ('features', FeatureUnion([
+
+            ('text_pipeline', Pipeline([
+                ('vect', CountVectorizer(tokenizer=tokenize)),
+                ('tfidf', TfidfTransformer())
+            ])),
+
+            ('starting_verb', StartingVerbExtractor())
+        ])),
+
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
 
+    # pipeline = Pipeline([
+    #     ('vect', CountVectorizer(tokenizer=tokenize)),
+    #     ('tfidf', TfidfTransformer()),
+    #     ('clf', MultiOutputClassifier(RandomForestClassifier()))
+    # ])
+
     # specify parameters for grid search
     parameters = {
-        'tfidf__smooth_idf': (True, False),
+        'features__text_pipeline__tfidf__smooth_idf': (True, False),
         'clf__estimator__warm_start': (True, False),
         'clf__estimator__min_samples_leaf': [2, 3, 4],
     }
