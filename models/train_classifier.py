@@ -15,7 +15,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.base import BaseEstimator, TransformerMixin
 import nltk
 
-nltk.download(['punkt', 'wordnet'])
+nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger'])
 
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
