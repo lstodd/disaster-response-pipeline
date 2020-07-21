@@ -8,7 +8,7 @@ from models.train_classifier import tokenize
 
 class TestTokenizer(unittest.TestCase):
     def setUp(self):
-        self.message = "We need food."
+        self.message = "We need food"
 
     def test_tokenize_simple_sentence(self):
         # arrange
