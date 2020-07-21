@@ -40,6 +40,25 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
         return pd.DataFrame(X_tagged)
 
 
+class StartingNounExtractor(BaseEstimator, TransformerMixin):
+
+    def starting_verb(self, text: str):
+        sentence_list = nltk.sent_tokenize(text)
+        for sentence in sentence_list:
+            pos_tags = nltk.pos_tag(tokenize(sentence))
+            first_word, first_tag = pos_tags[0]
+            if first_tag in ['NN', 'NNS']:
+                return True
+        return False
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X_tagged = pd.Series(X).apply(self.starting_verb)
+        return pd.DataFrame(X_tagged)
+
+
 def load_data(database_filepath: str) -> Tuple[np.array, np.array, np.array]:
     """
     Load the training data from the SQLite database.
@@ -88,7 +107,8 @@ def build_model() -> GridSearchCV:
                 ('tfidf', TfidfTransformer())
             ])),
 
-            ('starting_verb', StartingVerbExtractor())
+            ('starting_verb', StartingVerbExtractor(),
+             'starting_noun', StartingNounExtractor())
         ])),
 
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
