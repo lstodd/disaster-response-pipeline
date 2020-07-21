@@ -61,7 +61,7 @@ def tokenize(text: str) -> List[str]:
     Lowers and splits a string up into separate tokens.
 
     :param text: Raw string to tokenize.
-    :return: List of separate tokens.
+    :return: List of separated tokens.
     """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
@@ -74,7 +74,12 @@ def tokenize(text: str) -> List[str]:
     return clean_tokens
 
 
-def build_model():
+def build_model() -> GridSearchCV:
+    """
+    Build the sklearn model pipeline with paramters to grid search over.
+
+    :return: Sklearn grid searchable pipeline.
+    """
     # pipeline = Pipeline([
     #     ('features', FeatureUnion([
     #
@@ -108,7 +113,16 @@ def build_model():
     return cv
 
 
-def evaluate_model(model, X_test, y_test, category_names):
+def evaluate_model(model, X_test, y_test, category_names: np.array):
+    """
+    Returns the best parameters from a grid search.
+
+    :param model: Trained model.
+    :param X_test: Data for features.
+    :param y_test: Actual labels to check against.
+    :param category_names: Named of predicted labels.
+    :return: Return the parameters of the best model from grid search.
+    """
     y_pred = model.predict(X_test)
     for i in range(36):
         print(i)
@@ -117,7 +131,13 @@ def evaluate_model(model, X_test, y_test, category_names):
     print("\nBest Parameters:", model.best_params_)
 
 
-def save_model(model, model_filepath):
+def save_model(model: GridSearchCV, model_filepath: str) -> None:
+    """
+    Save the serialised model object.
+
+    :param model: Model object.
+    :param model_filepath: Model filename.
+    """
     joblib.dump(model, model_filepath)
 
 
