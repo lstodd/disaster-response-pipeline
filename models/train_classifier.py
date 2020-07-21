@@ -125,7 +125,7 @@ def evaluate_model(model, X_test, y_test, category_names: np.array):
     """
     y_pred = model.predict(X_test)
     for i in range(36):
-        print(i)
+        print(category_names[i])
         print(classification_report(y_test[:, i], y_pred[:, i]))
 
     print("\nBest Parameters:", model.best_params_)
