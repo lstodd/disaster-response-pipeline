@@ -8,7 +8,7 @@ from data.process_data import clean_data
 class TestCleanData(unittest.TestCase):
     def setUp(self):
         self.df = pd.DataFrame({"categories": ["related-1;request-0;offer-0"]})
-        self.cleaned_df = pd.DataFrame({"related": 1, "request": 0, "offer": 0})
+        self.cleaned_df = pd.DataFrame({"related": [1], "request": [0], "offer": [0]})
 
     def test_clean_data(self):
         # arrange
