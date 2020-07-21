@@ -42,7 +42,7 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 
 class StartingNounExtractor(BaseEstimator, TransformerMixin):
 
-    def starting_verb(self, text: str):
+    def starting_noun(self, text: str):
         sentence_list = nltk.sent_tokenize(text)
         for sentence in sentence_list:
             pos_tags = nltk.pos_tag(tokenize(sentence))
@@ -55,7 +55,7 @@ class StartingNounExtractor(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        X_tagged = pd.Series(X).apply(self.starting_verb)
+        X_tagged = pd.Series(X).apply(self.starting_noun)
         return pd.DataFrame(X_tagged)
 
 
