@@ -26,9 +26,11 @@ model = joblib.load("../models/classifier.pkl")
 @app.route('/index')
 def index():
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
     request_counts = df.request.value_counts()
     request_names = list(request_counts.index)
+
+    offer_counts = df.offer.value_counts()
+    offer_names = list(offer_counts.index)
 
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
@@ -48,6 +50,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Request"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=offer_names,
+                    y=offer_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Volume of offers',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Offer"
                 }
             }
         }
