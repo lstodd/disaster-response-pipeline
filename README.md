@@ -39,3 +39,14 @@ We create a multi class multi label model using XGBoost and natural language pro
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+
+### Web App
+
+To classify a new message using the trained model you can enter a message on the web app:
+
+![Enter message](/app/screenshots/enter_message.png)
+
+After clicking the 'classify' button, you will see the selected categories for your message highmighted in green:
+
+![Categorised message](/app/screenshots/categorised_message.png)
