@@ -4,3 +4,5 @@ scikit-learn
 nltk
 sqlalchemy
 joblib
+flask
+plotly

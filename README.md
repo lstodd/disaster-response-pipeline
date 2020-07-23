@@ -14,6 +14,16 @@ We create a multi class multi label model using XGBoost and natural language pro
 
 ### Instructions:
 
+### Requirements:
+* pandas
+* numpy
+* scikit-learn
+* nltk
+* sqlalchemy
+* joblib
+* flask
+* plotly
+
 #### Install requirements
 ``` pip install -r requirements.txt```
 
