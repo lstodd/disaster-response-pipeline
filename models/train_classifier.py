@@ -94,12 +94,6 @@ def build_model() -> GridSearchCV:
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
 
-    # pipeline = Pipeline([
-    #     ('vect', CountVectorizer(tokenizer=tokenize)),
-    #     ('tfidf', TfidfTransformer()),
-    #     ('clf', MultiOutputClassifier(RandomForestClassifier()))
-    # ])
-
     # specify parameters for grid search
     parameters = {
         'features__text_pipeline__tfidf__smooth_idf': (True, False),
