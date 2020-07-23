@@ -50,3 +50,9 @@ To classify a new message using the trained model you can enter a message on the
 After clicking the 'classify' button, you will see the selected categories for your message highmighted in green:
 
 ![Categorised message](/app/screenshots/categorised_message.PNG)
+
+Now we can deploy the appropriate response depending on the selected categories. In the above image we can see that this message relates to:
+* related
+* aid related
+* medical help
+* direct report
