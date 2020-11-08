@@ -47,7 +47,7 @@ To classify a new message using the trained model you can enter a message on the
 
 ![Enter message](/app/screenshots/enter_message.PNG)
 
-After clicking the 'classify' button, you will see the selected categories for your message highmighted in green:
+After clicking the 'classify' button, you will see the selected categories for your message highlighted in green:
 
 ![Categorised message](/app/screenshots/categorised_message.PNG)
 
