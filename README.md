@@ -10,7 +10,7 @@ The original data consists of messages from multiple sources and the annotated c
 more than one category.  
 
 ### Model 
-We create a multi class multi label model using XGBoost and natural language processing (NLP) features. 
+We create a multi class multi label model using RandomForestClassifier and natural language processing (NLP) features. 
 
 ### Instructions:
 
